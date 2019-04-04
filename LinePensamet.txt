@@ -31,4 +31,4 @@ Criar histórico, Limpar histórico, vai emitir son de click(opcional),
 vai conter data e hora.
  
 
-Esse Projeto vai ser baseado em MVC e POO co javaScript
+Esse Projeto vai ser baseado em MVC e POO co javaScript.
