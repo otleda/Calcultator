@@ -1,1 +1,1 @@
-# Cauculadora JavaScript
+# Calculadora JavaScript
