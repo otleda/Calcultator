@@ -17,7 +17,7 @@ html, body{
     height: 100%;
 }
 
-/* BASE CALCULATOR */
+/* BODY CALCULATOR */
     .baseCalculator{
         position: absolute;
         top: 50%;
@@ -28,7 +28,7 @@ html, body{
         justify-content: center;
         align-items: center;
         width: 300px;
-        height: 420px;
+        height: 450px;
         padding: 1em .8em;
         border-radius: 10px;
         background: #35292d;
@@ -44,7 +44,12 @@ html, body{
         z-index: -5;
     }
         .logo{
-            /* editar */
+            color: white;
+            font-size: 1.2em;
+            padding: 2px 5px 15px;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 2px 4px 9px #0e0c0d, 1px 1px 2px #fb8e03;
         }
         .led-red{
             
@@ -64,6 +69,7 @@ html, body{
             box-shadow: 6px 6px 10px inset rgba(0,0,0,.5),
                        -6px -6px 10px inset rgba(0,0,0,.2);
             font-family: 'Digital-7';
+            margin-bottom: 6px;
         }
             .dUp{
                 display: flex;
@@ -95,6 +101,7 @@ html, body{
                 height: 80px;
                 font-size: 2.5em;
                 color: #4e494b;
+                text-shadow: 2px 1px 2px #e2bd8d;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
                 border: 2px solid burlywood;
@@ -113,13 +120,11 @@ html, body{
     flex-direction: column;
     width: 100%;
     height: 80%;
-    /* background: burlywood; */
 }
     .row{
         display: flex;
         justify-content: center;
         height: 20%;
-        /* background: red; */
     }
         .col{
             display: flex;
@@ -132,6 +137,7 @@ html, body{
             border: 1px solid #231a1d;
             border-radius: 10px;
             color: #231a1d;
+            text-shadow: 0px 1px 2px #bfa17e;
             background: white;
             box-shadow: inset 0px -3px 0px #b79871, inset 0px -4px 16px rgba(35, 26, 29, .4), 0px 3px 5px rgba(0, 0, 0, .9);
             cursor: pointer;
@@ -145,7 +151,7 @@ html, body{
         }
     .none{
         background: transparent;
-        border: none;
+        box-shadow: none;
     }
         .col.operator.btn-somar{
             background: #dc9d4d;
