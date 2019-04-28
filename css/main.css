@@ -1,9 +1,14 @@
+@font-face {
+    font-family:'Digital-7';
+    src: local('/outhres/digital-7.ttf');
+}
+
 html, body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "digital-7";
     background: #dc9d4d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* ALINHAMENT */
@@ -41,6 +46,12 @@ html, body{
         .logo{
             /* editar */
         }
+        .led-red{
+            
+        }
+        .led-green{
+
+        }
 
 /* DISPLAY */
         .display-content{
@@ -52,12 +63,15 @@ html, body{
             background: linear-gradient(197deg, rgba(255,255,255,.6), rgba(206, 166, 115, 0.95));
             box-shadow: 6px 6px 10px inset rgba(0,0,0,.5),
                        -6px -6px 10px inset rgba(0,0,0,.2);
+            font-family: 'Digital-7';
         }
             .dUp{
                 display: flex;
                 align-items: center;
                 width: 99%;
                 height: 40%;
+                font-size: 1.2em;
+                color: #4e494b;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 border: 2px solid burlywood;
@@ -79,6 +93,8 @@ html, body{
                 align-items: center;
                 width: 99%;
                 height: 80px;
+                font-size: 2.5em;
+                color: #4e494b;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
                 border: 2px solid burlywood;
@@ -110,11 +126,18 @@ html, body{
             align-items: center;
             justify-content: center;
             width: 21%;
-            height: auto;
-            border: 1px solid #231a1d;
-            background: white;
-            border-radius: 10px;
             margin: 2px;
+            height: auto;
+            font-size: 30px;
+            border: 1px solid #231a1d;
+            border-radius: 10px;
+            color: #231a1d;
+            background: white;
+            box-shadow: inset 0px -3px 0px #b79871, inset 0px -4px 16px rgba(35, 26, 29, .4), 0px 3px 5px rgba(0, 0, 0, .9);
+            cursor: pointer;
+        }
+        .col:hover{
+            box-shadow:0px 0px 5px rgba(0, 0, 0, .5);
         }
         .btn-ac,
         .btn-ce{
