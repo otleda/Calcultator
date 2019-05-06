@@ -1,34 +1,53 @@
 class CalcController {
     //ATRIBUTOS
     constructor(){
-        this._displayCalc = 0;
+        this._locale = "pt-BR";
+        this._$display = document.querySelector('#display');
+        this._$date =  document.querySelector('#data');
+        this._$time = document.querySelector('#time');
         this._currentDate;
         this.initialize();
-    }
-
-    //GETTERS E SETTERS
-    get displayCalc(){
-        return this._displayCalc;
-    }
-    set displayCalc(value){
-        this._displayCalc = value;
-    }
-    
-    get currentDate(){
-        return this._currentDate;
-    }
-    set currentDate(value){
-        this._currentDate = value;
     }
     
     //METODOS
     initialize(){
-        let $displayCalc = document.querySelector('#display');
-        let $date =  document.querySelector('#data');
-        let $time = document.querySelector('#time');
+        setInterval(() => {
+            this.displayDate = this.currentDate.toLocaleDateString(this._locale);
+            this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
+        }, 1000);
+    }
 
-        $displayCalc.innerHTML = "1010";
-        $date.innerHTML = "10/10/2019";
-        $time.innerHTML = "22:59";
+    //GETTERS E SETTERS
+   
+    //Display
+    get displayCalc(){
+        return this._$display.innerHTML;
+    }
+    set displayCalc(value){
+        this._$display.innerHTML = value;
+    }
+
+    //Data
+    get displayDate(){
+        return this._$date.innerHTML;
+    }
+    set displayDate(value){
+        this._$date.innerHTML = value;
+    }
+
+    //Hora
+    get displayTime(){  
+       return this._$time.innerHTML;
+    }
+    set displayTime(value){
+        this._$time.innerHTML = value;
+    }
+    
+    //Date classe nativa do javaScript
+    get currentDate(){
+        return new Date();
+    }
+    set currentDate(value){
+        this._currentDate = value;
     }
 }
