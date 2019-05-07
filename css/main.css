@@ -153,7 +153,7 @@ html, body{
         background: transparent;
         box-shadow: none;
     }
-        .col.operator.btn-somar{
+        .col.btn-somar{
             background: #dc9d4d;
             height: 190%;
             z-index: 1;
