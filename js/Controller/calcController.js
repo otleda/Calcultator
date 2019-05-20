@@ -36,8 +36,9 @@ class CalcController {
     initButtonsEvents(){
         let buttons = document.querySelectorAll('.col');
         buttons.forEach( btn => {
-            this.addEventListenerAll(btn, 'click drag', event => {
-                console.log(btn.className.replace("col","").replace("btn-",""));
+            this.addEventListenerAll(btn, 'click drag', () => {
+                this.displayCalc = btn.className.replace("col","").replace("btn-","");
+                console.log(this.displayCalc)
             });
         });
     }
