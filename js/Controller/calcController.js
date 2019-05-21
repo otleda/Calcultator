@@ -6,11 +6,18 @@ class CalcController {
         this._$date =  document.querySelector('#data');
         this._$time = document.querySelector('#time');
         this._currentDate;
+
         this.initialize();
         this.initButtonsEvents();
     }
     
     //METODOS
+    setDisplayDateTime(){
+        this.displayDate = this.currentDate.toLocaleDateString(this._locale);
+        this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
+    }
+
+    // MAIN FUNCTION
     initialize(){
 
         this.setDisplayDateTime();
@@ -20,25 +27,23 @@ class CalcController {
         }, 1000);
     }
 
-    setDisplayDateTime(){
-        this.displayDate = this.currentDate.toLocaleDateString(this._locale);
-        this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
-    }
-    
+   
+
     addEventListenerAll(element, events, fn){
 
         events.split(' ').forEach( event => {
             element.addEventListener(event, fn, false);
         });
-
     }
 
+    // MAIN FUNCTION
     initButtonsEvents(){
         let buttons = document.querySelectorAll('.col');
         buttons.forEach( btn => {
             this.addEventListenerAll(btn, 'click drag', () => {
-                this.displayCalc = btn.className.replace("col","").replace("btn-","");
-                console.log(this.displayCalc)
+                let displayText = btn.className.replace("col","").replace("btn-","");
+                displayText = this.displayCalc = '2020';
+                console.log(displayText);
             });
         });
     }
