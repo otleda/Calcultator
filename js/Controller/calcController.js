@@ -1,14 +1,15 @@
 class CalcController {
     //ATRIBUTOS
     constructor(){
+        this._operation = [];
         this._locale = 'pt-BR';
-        this._$display = document.querySelector('#display');
-        this._$date =  document.querySelector('#data');
-        this._$time = document.querySelector('#time');
+        this._displayEl = document.querySelector('#display');
+        this._dateEl =  document.querySelector('#data');
+        this._timeEl = document.querySelector('#time');
         this._currentDate;
-
         this.initialize();
         this.initButtonsEvents();
+        
     }
     
     //METODOS
@@ -17,7 +18,7 @@ class CalcController {
         this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
     }
 
-    // MAIN FUNCTION
+    // 01
     initialize(){
 
         this.setDisplayDateTime();
@@ -27,7 +28,6 @@ class CalcController {
         }, 1000);
     }
 
-   
 
     addEventListenerAll(element, events, fn){
 
@@ -36,42 +36,107 @@ class CalcController {
         });
     }
 
-    // MAIN FUNCTION
+    clearAll(){
+        this._operation = [];
+    }
+
+    cancelEntry(){
+        this._operation.pop();
+    }
+    
+    addOperation(value){
+        this._operation.push(value);
+        
+        console.log(this._operation);
+    }
+    
+    setError(){
+        this.displayCalc = "Error";
+    }
+
+    execBtn(value){
+
+        switch (value) {
+            case 'ac':
+                this.clearAll();
+                break;
+
+            case 'ce':
+                this.cancelEntry();
+                break;
+
+            case 'porcento':
+                break;
+
+            case 'divisao':
+                break;
+
+            case 'multi':
+                break;
+
+            case 'subtracao':
+                break;
+                
+            case 'soma':
+                break;
+
+            case 'igual':
+                break;
+
+            case 'ponto':
+                break;
+
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                    this.addOperation(parseInt(value));
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    // 02
     initButtonsEvents(){
         let buttons = document.querySelectorAll('.col');
         buttons.forEach( btn => {
-            this.addEventListenerAll(btn, 'click drag', () => {
-                let displayText = btn.className.replace("col","").replace("btn-","");
-                displayText = this.displayCalc = '2020';
-                console.log(displayText);
+            this.addEventListenerAll(btn, 'click drag', e => {
+              
+               e = btn.className.replace("col btn-","");
+               
+                this.execBtn(e);
             });
         });
     }
 
     //GETTERS E SETTERS
-   
-    //Display
     get displayCalc(){
-        return this._$display.innerHTML;
+        return this._displayEl.innerHTML;
     }
     set displayCalc(value){
-        this._$display.innerHTML = value;
+        this._displayEl.innerHTML = value;
     }
 
-    //Data
     get displayDate(){
-        return this._$date.innerHTML;
+        return this._dateEl.innerHTML;
     }
     set displayDate(value){
-        this._$date.innerHTML = value;
+        this._dateEl.innerHTML = value;
     }
 
-    //Hora
     get displayTime(){  
-       return this._$time.innerHTML;
+       return this._timeEl.innerHTML;
     }
     set displayTime(value){
-        this._$time.innerHTML = value;
+        this._timeEl.innerHTML = value;
     }
     
     //Date classe nativa do javaScript

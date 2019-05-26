@@ -1,13 +1,13 @@
 @font-face {
-    font-family:'Digital-7';
-    src: local('/outhres/digital-7.ttf');
+    /* font-family:'Digital-7'; */
+    /* src: local('/other/digital-7.ttf'); */
 }
 
 html, body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #dc9d4d;
+    background: #35292d;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -153,7 +153,7 @@ html, body{
         background: transparent;
         box-shadow: none;
     }
-        .col.btn-somar{
+        .col.btn-soma{
             background: #dc9d4d;
             height: 190%;
             z-index: 1;
