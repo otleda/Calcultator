@@ -11,8 +11,7 @@
 
 
 <p align="right">
-  <a href="https://monkeycode.com" target="_blank" >
-    <img alt="MOnkeyCode" src="./imgs/logoMonkey.png
-    " width="80" />
+  <a href="https://monkeycode.com" target="_blank">
+    <img alt="MOnkeyCode" src="./imgs/logoMonkey.png" width="80">
   </a>
 </p>
