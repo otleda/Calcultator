@@ -28,11 +28,8 @@ class CalcController {
     }
 
 
-    addEventListenerAll(element, events, fn){
-
-        events.split(' ').forEach( event => {
-            element.addEventListener(event, fn);
-        });
+    setError(){
+        this.displayCalc = "error";
     }
 
     clearAll(){
@@ -44,34 +41,40 @@ class CalcController {
     }
     
     getLastOperation(){
-       return this._operation[this._operation.length - 1];
+
+        return this._operation[this._operation.length - 1];
     }
 
+    setLastOperation(value){
+
+        this._operation[ this._operation.length -1 ] = value;
+    }
+
+    isOperator(value){
+       
+       return (['%', '/', '*', '-', '+'].indexOf(value) > -1);
+
+    }
+
+
+    setLastNumberToDisplay(){
+
+    }
 
     addOperation(value){
-
-        if(isNaN(this.getLastOperation())){
         
+	if(isNaN()){
+		// true String
+	}else{
+		// false Number
+	}
 
+	this._operation.push(value);
+	console.log(this._operation);
 
-        }else{
-
-            let newValue =  this.getLastOperation().toString() + value.toString();
-            this._operation.push(newValue);
-
-            console.log(newValue);
-
-        }
-
-    
-        console.log(this._operation);
     }
     
-    setError(){
-        this.displayCalc = "error";
-    }
-
-    execBtn(value){
+    execBtn(value){ 
 
         switch (value){
             case 'ac':
@@ -103,6 +106,7 @@ class CalcController {
                 break;
 
             case 'igual':
+                    //editar
                 break;
 
             case 'ponto':
@@ -128,16 +132,23 @@ class CalcController {
         }
     }
 
+    addEventListenerAll(element, events, fn){
+
+        events.split(' ').forEach( event => {
+            element.addEventListener(event, fn);
+        });
+    }
+
     // 02
     initButtonsEvents(){
 
         let buttons = document.querySelectorAll('.col');
         buttons.forEach( btn => {
-            this.addEventListenerAll( btn, 'click drag', value => {
+            this.addEventListenerAll( btn, 'click', () => {
               
-                value = btn.className.replace("col btn-","");
+               let valueBtn = btn.className.replace("col btn-","");
                
-                this.execBtn(value);
+               this.execBtn(valueBtn);
 
             });
         });
