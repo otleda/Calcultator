@@ -148,8 +148,7 @@ class CalcController {
               
                let valueBtn = btn.className.replace("col btn-","");
                
-               this.execBtn(valueBtn);
-
+               this.execBtn(valueBtn); 
             });
         });
     }
