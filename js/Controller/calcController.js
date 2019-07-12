@@ -41,36 +41,55 @@ class CalcController {
     }
     
     getLastOperation(){
-
         return this._operation[this._operation.length - 1];
     }
 
     setLastOperation(value){
-
         this._operation[ this._operation.length -1 ] = value;
     }
 
     isOperator(value){
-       
        return (['%', '/', '*', '-', '+'].indexOf(value) > -1);
-
     }
-
+ 
 
     setLastNumberToDisplay(){
-
+        //Editar
     }
 
     addOperation(value){
-        
-	if(isNaN()){
-		// true String
-	}else{
-		// false Number
-	}
 
-	this._operation.push(value);
-	console.log(this._operation);
+        console.log('02', value);
+
+        if(isNaN(this.getLastOperation())){
+
+            // String
+            console.log('03', isNaN(this.getLastOperation()));
+            
+            if(this.isOperator(value)){
+                //oeparador
+                 this._operation[this._operation.length - 1] = value;
+
+                console.log('Operador', this.isOperator(value));
+
+            }else {
+
+                //e o ponto
+                console.log('bug', value);
+            }
+
+        }else{
+            // Number
+        let newValue = this.getLastOperation().toString() + value.toString();
+        
+        this._operation.push(newValue);
+            
+            console.log('testando', newValue);
+            
+            console.log('04', value);
+        }
+
+        //console.log('Populando na Array', this._operation);
 
     }
     
@@ -144,11 +163,13 @@ class CalcController {
 
         let buttons = document.querySelectorAll('.col');
         buttons.forEach( btn => {
-            this.addEventListenerAll( btn, 'click', () => {
-              
+            this.addEventListenerAll( btn, 'click drag', () => {
+               
                let valueBtn = btn.className.replace("col btn-","");
                
                this.execBtn(valueBtn); 
+
+               console.log('01', valueBtn);
             });
         });
     }
