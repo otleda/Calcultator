@@ -22,7 +22,7 @@ html, body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 300px;
+        width: 280px;
         height: 450px;
         padding: 1em .8em;
         border-radius: 10px;
@@ -113,13 +113,13 @@ html, body{
                 align-items: center;
                 width: 99%;
                 height: 100%;
-                font-size: 2.5em;
-                color: #4e494b;
-                text-shadow: 2px 1px 2px #e2bd8d;
+                font-size: 2em;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
                 border: 2px solid burlywood;
                 border-top: transparent;
+                text-shadow: 2px 1px 2px #fff8e0;
+                color: #1c3540;
             }
                 .display{
                     width: 100%;
