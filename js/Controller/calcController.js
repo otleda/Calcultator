@@ -1,4 +1,4 @@
-class CalcController {
+class CalcController{
     //ATRIBUTOS
     constructor(){
         this._operation = [];
@@ -27,46 +27,119 @@ class CalcController {
         }, 1000);
     }
 
-
     setError(){
+        
         this.displayCalc = "error";
     }
 
     clearAll(){
+
         this._operation = [];
     }
 
     cancelEntry(){
+
         this._operation.pop();
     }
+
+    //pegando o ultimo valor da array
+    getLastOperation(){
+
+        return this._operation[this._operation.length - 1];
+
+     }
+
+    //trocando o valor da array
+     setLastOperation(value){
+         
+         this._operation[ this._operation.length -1 ] = value;
     
-    // getLastOperation(){
-    //     return this._operation[this._operation.length - 1];
-    // }
+     }
 
-    // setLastOperation(value){
-    //     this._operation[ this._operation.length -1 ] = value;
-    // }
-
-    // isOperator(value){
-    //    return (['%', '/', '*', '-', '+'].indexOf(value) > -1);
-    // }
- 
-
-    setLastNumberToDisplay(){
-        //Editar
+    isOperator(value){
+        
+        return (['%', '/', '*', '-', '+'].indexOf(value) > -1);
     }
 
-    addOperation(value){
+    setLastNumberToDisplay(){
+
+        let LastNumber;
+
+        for(let i = this._operation.length -1; i >= 0; i--){
+
+            if(!this.isOperator(this._operation[i])){
+
+                LastNumber = this._operation[i];
+
+                break;
+            }
+        }
+        this.displayCalc = LastNumber;
+    }
+
+    calc(){
+
+        let last = this._operation.pop();
+
+        let result = eval(this._operation.join(""));
+        
+        this._operation = [result, last];
+
+        this.setLastNumberToDisplay();
+        
+    }
+
+    pushOperation(value){
 
         this._operation.push(value);
 
-        console.log( this._operation);
-    }
-   
-    execBtn(value){ 
+        if(this._operation.length > 3){
 
-        switch (value){
+            this.calc();
+
+        }
+
+    }
+
+    addOperation(value){
+       
+        if(isNaN(this.getLastOperation(value))){ 
+
+            if(this.isOperator(value)){
+
+                this.setLastOperation(value);
+
+            }else if(isNaN(value)){
+
+                // tratando o ponto
+
+            }else{
+
+                this.pushOperation(value);
+
+                this.setLastNumberToDisplay();
+            }
+            
+        }else{
+
+            if(this.isOperator(value)){
+
+                this.pushOperation(value);
+
+            }else{
+
+                let newValue = this.getLastOperation().toString() + value.toString();
+                this.setLastOperation(parseInt(newValue));
+
+                this.setLastNumberToDisplay();
+            }
+        }
+        console.log('Yes', this._operation);
+    }
+        
+    execBtn(value){     
+
+        switch(value){
             case 'ac':
                 this.clearAll();
                 break;
@@ -74,7 +147,7 @@ class CalcController {
             case 'ce':
                 this.cancelEntry();
                 break;
-
+        
             case 'porcento':
                 this.addOperation('%');
                 break;
@@ -127,7 +200,7 @@ class CalcController {
         events.split(' ').forEach( event => {
 
             element.addEventListener(event, fn);
-                
+
         });
     }
 
@@ -141,7 +214,7 @@ class CalcController {
             this.addEventListenerAll( btn, 'click drag', () => {
                
                 let valueBtn = btn.className.replace("col btn-","");
-               
+
                 this.execBtn(valueBtn); 
 
             });
@@ -156,12 +229,14 @@ class CalcController {
         this._displayEl.innerHTML = value;
     }
 
+
     get displayDate(){
         return this._dateEl.innerHTML;
     }
     set displayDate(value){
         this._dateEl.innerHTML = value;
     }
+
 
     get displayTime(){  
        return this._timeEl.innerHTML;
@@ -170,6 +245,7 @@ class CalcController {
         this._timeEl.innerHTML = value;
     }
     
+
     //Date classe nativa do javaScript
     get currentDate(){
         return new Date();
