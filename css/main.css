@@ -26,7 +26,7 @@ html, body{
         height: 450px;
         padding: 1em .8em;
         border-radius: 10px;
-        background: #1c3540;
+        background: black;
     }
     .baseCalculator:after{
         position: absolute;
