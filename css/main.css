@@ -1,8 +1,16 @@
+:root {
+    --primary : #4c4c4c;
+    --shadow : rgb(71, 70, 70);
+    --secundary :#e0e0e0;
+    --tertiary : #ec9649;
+}
+
+
 html, body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #23353e;
+    background: var(--secundary);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -26,16 +34,16 @@ html, body{
         height: 450px;
         padding: 1em .8em;
         border-radius: 10px;
-        background: black;
+        background: var(--primary);
     }
     .baseCalculator:after{
         position: absolute;
         content: "";
         width: 100%;
         height: 100%;
-        border: 10px solid #deb887;
+        border: 10px solid var(--primary);
         border-radius: 25px;
-        box-shadow: 0px 10px 0px #b79871, 0px 16px 15px rgba(0,0,0,0.45);
+        box-shadow: 0px 10px 0px var(--shadow), 0px 16px 15px rgba(0,0,0,0.45);
         z-index: -5;
     }
     .logoLeds {
@@ -66,7 +74,8 @@ html, body{
             .l-green{
                 width: 10px;
                 height: 10px;
-                border: 2px solid #8BC34A;
+                border: 2px solid transparent;
+                background-color:  #8BC34A;
                 border-radius: 50%;
                 margin-left: 10px;
             }
@@ -79,10 +88,10 @@ html, body{
             width: 90%;
             height: 18%;
             border-radius: 10px;
-            background: linear-gradient(197deg, rgba(255,255,255,.6), rgba(206, 166, 115, 0.95));
+            background: linear-gradient(197deg, rgb(255, 255, 255), rgba(255, 255, 255, 0.95));
             box-shadow: 6px 6px 10px inset rgba(0,0,0,.5),
                        -6px -6px 10px inset rgba(0,0,0,.2);
-            margin-bottom: 6px;
+            margin-bottom: 40px;
         }
             .dUp{
                 display: flex;
@@ -112,7 +121,7 @@ html, body{
                 align-items: center;
                 width: 99%;
                 height: 100%;
-                font-size: 2em;
+                font-size: 1.8em;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
                 border: 2px solid burlywood;
@@ -143,27 +152,24 @@ html, body{
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             border: 1px solid #231a1d;
             font-size: 30px;
-            margin: 2px;
+            margin: 4px;
             color: #231a1d;
             text-shadow: 0px 1px 2px #bfa17e;
-            background: white;
-            box-shadow: inset 0px -3px 0px #b79871, inset 0px -4px 16px rgba(35, 26, 29, .4), 0px 3px 5px rgb(54, 65, 70);
+            background: var(--secundary);
             cursor: pointer;
         }
         .btn-igual{
             margin-right: 2.2em;
         }
-        .col:hover{
-            box-shadow:0px 0px 5px rgba(0, 0, 0, .5);
-        }
+      
         .btn-ac,
         .btn-ce{
-            background: #e4be8e;
+            background: var(--tertiary);
         }
     .none{
         background: transparent;
@@ -171,7 +177,7 @@ html, body{
         border: none;
     }
         .col.btn-soma{
-            background: #dc9d4d;
+            background: var(--tertiary);
             height: 190%;
             z-index: 1;
             border-radius: 20px;
