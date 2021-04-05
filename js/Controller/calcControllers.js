@@ -29,12 +29,17 @@ class CalcControllers {
         });
     }
 
-    clearAll() {
-        this.operation = []; 
+    clearAll(value) {
+        this.operation = [];
+       console.log( this.setLastNumberToDisplay(value)); 
+     
     }
-    clearEntry() {
-        this.operation.pop(); 
+
+    clearEntry(value) {
+        this.operation.pop();
+        this.setLastNumberToDisplay(value); 
     }
+
     setError() {
         this.displayCalc = "Error"; 
     }
@@ -51,12 +56,33 @@ class CalcControllers {
         return (['%', '*', '/', '-', '+'].indexOf(value) > -1) // => O typeof vai busca na array se existe os sinais, se ele achar vai trazer o index.
     }
 
+    calc() {
+        let last = this.operation.pop();
+        let calcResult = eval(this.operation.join(' ')); // join() => junta toda a array eval() => calcula toda a expressao, mesmo o dado estiver como string.
+        this.operation = [calcResult, last];
+        this.setLastNumberToDisplay();
+
+        console.log(this.operation)
+    }
+
     pushOperation(value) {
         this.operation.push(value);
 
         if(this.operation.length > 3) {
+            this.calc();
             console.log(this.operation)
         }
+    }
+
+    setLastNumberToDisplay(value) {
+        
+        for (let i = this.operation.length - 1; i >= 0; i--) {
+            if(!this.isOperation(this.operation[i])) {
+                value = this.operation[i];
+                break;
+            }
+        }
+        this.displayCalc = value;
     }
 
     addOperation(value) {
@@ -66,6 +92,7 @@ class CalcControllers {
                 this.setLastOperation(value); // trocar o operador
             } else {  
                 this.pushOperation(value);
+                this.setLastNumberToDisplay();
             }    
         } else { //Number "false", aqui vai ser tratado os numeros.
             if (this.isOperation(value)) {
@@ -73,15 +100,18 @@ class CalcControllers {
             } else {
                 let newValue = this.getLastOperation().toString() + value.toString();
                 this.setLastOperation(parseInt(newValue));
+
+                this.setLastNumberToDisplay();
             }
         }
-        //console.log(this.operation)
+        console.log(this.operation)
     }
 
     execBtn(value) {
         switch (value) {
             case 'c':
                 this.clearAll();
+                this.setLastNumberToDisplay();
                 break;
 
             case 'e':
@@ -131,7 +161,6 @@ class CalcControllers {
             this.addEventListenerAll(button, 'click drag', () =>{
                 let textBtn = button.className.replace('col btn-','');
                 this.execBtn(textBtn);
-
             });
         });
     }   
