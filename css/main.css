@@ -1,8 +1,8 @@
 :root {
-    --primary : #4c4c4c;
-    --shadow : rgb(71, 70, 70);
+    --primary : #626262;
+    --shadow : rgb(36, 36, 36);
     --secundary :#e0e0e0;
-    --tertiary : #ec9649;
+    --tertiary : #f1923c;
 }
 
 @font-face {
@@ -38,7 +38,7 @@ html, body{
         height: 450px;
         padding: 1em .8em;
         border-radius: 10px;
-        background: var(--primary);
+        background:  #3e3e3e;;
     }
     .baseCalculator:after{
         position: absolute;
@@ -105,7 +105,7 @@ html, body{
                 color: #4e494b;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
-                border: 2px solid burlywood;
+                border: 2px solid #f1923c;
                 border-bottom: transparent;
             }
                 .time{ 
@@ -125,7 +125,7 @@ html, body{
                 font-size: 1.8em;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
-                border: 2px solid burlywood;
+                border: 2px solid #f1923c;
                 border-top: transparent;
                 text-shadow: 2px 1px 2px #fff8e0;
                 color: #1c3540;
@@ -160,7 +160,7 @@ html, body{
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            border: 1px solid #231a1d;
+            border: 1px solid transparent;
             font-size: 30px;
             margin: 4px;
             color: #231a1d;

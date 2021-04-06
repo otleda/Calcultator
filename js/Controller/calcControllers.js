@@ -54,15 +54,24 @@ class CalcControllers {
         return (['%', '*', '/', '-', '+'].indexOf(value) > -1) // => O typeof vai busca na array se existe os sinais, se ele achar vai trazer o index.
     }
 
-    calc() {
-        let last = this.operation.pop();
-        let result = eval(this.operation.join(' ')); // join() => junta toda a array eval() => calcula toda a expressao, mesmo o dado estiver como string.
-        
+    getResult() {
+        return eval(this.operation.join(' ')); // join() => junta toda a array eval() => calcula toda a expressao, mesmo o dado estiver como string.
+    }
+
+     calc() {
+        let last;
+        if (this.operation.length > 3) {
+            last = this.operation.pop();
+            console.log('A', last )
+        } 
+        let result = this.getResult();
+        console.log('B', result)
         if (last == '%') {
             result /= 100;
             this.operation = [result];
-        } else {        
-            this.operation = [result, last];
+        } else {      
+            this.operation = [result];
+            this.setLastNumberToDisplay();   
         }
     }
 
@@ -83,7 +92,6 @@ class CalcControllers {
         }
         if (!lastNumber) lastNumber = 0;
         this.displayCalc = lastNumber;
-        console.log(this.displayCalc)
     }
 
     addOperation(value) {
@@ -103,6 +111,7 @@ class CalcControllers {
             }
             this.setLastNumberToDisplay();
         }
+        console.log(this.operation)
     }
 
     execBtn(value) {
@@ -129,7 +138,7 @@ class CalcControllers {
                 this.addOperation('+');
                 break;
             case 'igual':
-                
+                this.calc();
                 break;
             case 'ponto':
                 this.addOperation();
@@ -146,7 +155,7 @@ class CalcControllers {
     initButtonsEvents() { // 2 METODO PRINCIPAL
         let buttons =  document.querySelectorAll('#buttons .col');
         buttons.forEach(button => {
-            this.addEventListenerAll(button, 'click drag', () =>{
+            this.addEventListenerAll(button, 'click drag', () => {
                 let textBtn = button.className.replace('col btn-','');
                 this.execBtn(textBtn);
             });
