@@ -29,5 +29,6 @@
 
 - [ OK ] Criar um metodo para pegar o ultimo dado digitado dentro da Array.
 
-- [  ] Criar um Metodo que verifica se estamos digitamos numero, ou sinais na calculadora, com a funcao nativa do javaScript isNAN() => ele diz se quando nao e um numero.
+- [ OK ] Criar um Metodo que verifica se estamos digitamos numero, ou sinais na calculadora, com a funcao nativa do javaScript isNAN() => ele diz se quando nao e um numero.
+
 - [  ] Criar uma forma de quando popular na array da calculadora, quando for ate 4 indice somar na array exemplo [(300,"+",140), "-"], mostrar o resultado na tela 440
